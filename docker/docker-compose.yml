@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: db
+    image: postgres:17.0-alpine
+    volumes:
+      - data:/var/lib/postgresql/data
+    env_file:
+      - ../.env_EXAMPLE
+    ports:
+      - "5432:5432"
+    networks:
+      - backend-network
+    restart: always
+
+  forum_app:
+    container_name: forum_app
+    build:
+      context: ./..
+      dockerfile: docker/python/Dockerfile
+    volumes:
+      - ..:/code
+    env_file:
+      - ../.env_EXAMPLE
+    command: /start-web.sh
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    networks:
+      - backend-network
+    restart: always
+
+
+volumes:
+  data:
+
+networks:
+  backend-network:
