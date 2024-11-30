@@ -2,13 +2,6 @@
 
 Welcome to the **Spy Cat Agency API** documentation! This API allows you to manage missions, targets, and assignments.
 
-## API Endpoints
-
-- Create, update, and delete missions.
-- Assign cats to missions.
-- Retrieve mission details and target status.
-
-For a detailed list of available API endpoints, you can use the Postman collection linked below.
 
 ## Postman Collection
 
@@ -30,7 +23,7 @@ To get started with this API:
 3. Run the following command to start the project using Docker Compose:
 
     ```bash
-    docker_compose up -d
+    docker-compose up -d
     ```
 
 4. Once the containers are up and running, you can use the provided Postman collection to test the API.
